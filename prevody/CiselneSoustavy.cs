@@ -65,6 +65,7 @@ namespace prevody
             if (dec < 1) return "0";
 
             int hexCis = dec;
+            char znakCifry = 'A';
             string hexStr = string.Empty;
 
 
@@ -78,6 +79,20 @@ namespace prevody
                     hexStr = hexStr.Insert(0, Convert.ToChar(hexCis + 55).ToString());
 
                 dec /= 16;
+            }
+
+            while(dec != 0)
+            {
+                int zb = dec % 16;
+                if(zb<=0)
+                {
+                    hexCis = zb + hexCis;
+                }
+                else
+                {
+                    znakCifry = (char)('A' + zb - 10);
+                    hexCis = znakCifry + hexCis;
+                }
             }
 
             return hexStr;
