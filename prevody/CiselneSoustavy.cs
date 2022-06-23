@@ -87,7 +87,7 @@ namespace prevody
         public string BinToHex(string bin)
         {
             int delka = bin.Length;
-            string hex = string.Empty;
+         
            
                 while(delka % 4 != 0)
                 {
@@ -97,6 +97,7 @@ namespace prevody
 
             StringBuilder hexadecimal = new StringBuilder();
             StringBuilder cast = new StringBuilder("0000");
+          
             for (int i = 0; i < bin.Length; i += 4)
             {
                 for (int j = i; j < i + 4; j++)
@@ -132,13 +133,78 @@ namespace prevody
 
         }
 
-        public string HexToBin(string hexCis)
+        public string HexToBin(string hexdec)
         {
-            string dec = HexToDecimal(hexCis).ToString();
-            string bin = DecToBin(int.Parse(dec));
+
+            string bin = string.Empty;
+            int delka = hexdec.Length - 1;
+            for (int i = 0; i <= delka; i++)
+            { 
+                switch (hexdec[i])
+                {
+                    case '0':
+                        bin = bin.Insert(bin.Length,"0000");
+                        break;
+                    case '1':
+                        bin = bin.Insert(bin.Length, "0001");
+                        break;
+                    case '2':
+                        bin = bin.Insert(bin.Length, "0010");
+                        break;
+                    case '3':
+                        bin = bin.Insert(bin.Length, "0011");
+                        break;
+                    case '4':
+                        bin = bin.Insert(bin.Length, "0100");
+                        break;
+                    case '5':
+                        bin = bin.Insert(bin.Length, "0101");
+                        break;
+                    case '6':
+                        bin = bin.Insert(bin.Length, "0110");
+                        break;
+                    case '7':
+                        bin = bin.Insert(bin.Length, "0111");
+                        break;
+                    case '8':
+                        bin = bin.Insert(bin.Length, "1000");
+                        break;
+                    case '9':
+                        bin = bin.Insert(bin.Length, "1001");
+                        break;
+                    case 'A':
+                    case 'a':
+                        bin = bin.Insert(bin.Length, "1010");
+                        break;
+                    case 'B':
+                    case 'b':
+                        bin = bin.Insert(bin.Length, "1011");
+                        break;
+                    case 'C':
+                    case 'c':
+                        bin = bin.Insert(bin.Length, "1100");
+                        break;
+                    case 'D':
+                    case 'd':
+                        bin = bin.Insert(bin.Length, "1101");
+                        break;
+                    case 'E':
+                    case 'e':
+                        bin = bin.Insert(bin.Length, "1110");
+                        break;
+                    case 'F':
+                    case 'f':
+                        bin = bin.Insert(bin.Length, "1111");
+                        break;
+                    default:
+                        return "\nŠpatné hexadecimální číslo";
+                }
+             
+            }
             return bin;
         }
+    }
 
     }
-    }
+    
 
