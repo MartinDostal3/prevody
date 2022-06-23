@@ -87,15 +87,15 @@ namespace prevody
         public string BinToHex(string bin)
         {
             int delka = bin.Length;
-         
-           
-                while(delka % 4 != 0)
+            string hex = "";
+
+            while (delka % 4 != 0)
                 {
                     bin = bin.Insert(0, "0") ;
                     delka++;
                 }
 
-            StringBuilder hexadecimal = new StringBuilder();
+            /*StringBuilder hexadecimal = new StringBuilder();
             StringBuilder cast = new StringBuilder("0000");
           
             for (int i = 0; i < bin.Length; i += 4)
@@ -127,9 +127,37 @@ namespace prevody
                         return "Špatné číslo";
                 }
                 
+            }*/
+            while (delka > 0)
+            {
+                string substring = bin.Substring(bin.Length - 4, 4);
+                bin = bin.Remove(bin.Length - 4, 4);
+                delka -= 4;
+
+                switch (substring)
+                {
+                    case "0000": hex = hex.Insert(0, "0"); break;
+                    case "0001": hex = hex.Insert(0, "1"); break;
+                    case "0010": hex = hex.Insert(0, "2"); break;
+                    case "0011": hex = hex.Insert(0, "3"); break;
+                    case "0100": hex = hex.Insert(0, "4"); break;
+                    case "0101": hex = hex.Insert(0, "5"); break;
+                    case "0110": hex = hex.Insert(0, "6"); break;
+                    case "0111": hex = hex.Insert(0, "7"); break;
+                    case "1000": hex = hex.Insert(0, "8"); break;
+                    case "1001": hex = hex.Insert(0, "9"); break;
+                    case "1010": hex = hex.Insert(0, "A"); break;
+                    case "1011": hex = hex.Insert(0, "B"); break;
+                    case "1100": hex = hex.Insert(0, "C"); break;
+                    case "1101": hex = hex.Insert(0, "D"); break;
+                    case "1110": hex = hex.Insert(0, "E"); break;
+                    case "1111": hex = hex.Insert(0, "F"); break;
+                    default:
+                        return "Spatne cislo";
+                }
             }
 
-            return hexadecimal.ToString();
+            return hex.ToString();
 
         }
 
