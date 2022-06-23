@@ -51,5 +51,19 @@ namespace prevody
             int bin = int.Parse(textBox1.Text);
             label1.Text = cis.BinToHex(bin);
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            CiselneSoustavy cis = new CiselneSoustavy();
+            string hex = textBox1.Text;
+            label1.Text = cis.HexToBin(hex);
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+        }
     }
 }

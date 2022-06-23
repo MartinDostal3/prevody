@@ -65,7 +65,7 @@ namespace prevody
             if (dec < 1) return "0";
 
             int hexCis = dec;
-            char znakCifry = 'A';
+            // char znakCifry = 'A';
             string hexStr = string.Empty;
 
 
@@ -81,19 +81,19 @@ namespace prevody
                 dec /= 16;
             }
 
-            while(dec != 0)
-            {
-                int zb = dec % 16;
-                if(zb<=0)
-                {
-                    hexCis = zb + hexCis;
-                }
-                else
-                {
-                    znakCifry = (char)('A' + zb - 10);
-                    hexCis = znakCifry + hexCis;
-                }
-            }
+            /*   while(dec != 0)
+               {
+                   int zb = dec % 16;
+                   if(zb<=0)
+                   {
+                       hexCis = zb + hexCis;
+                   }
+                   else
+                   {
+                       znakCifry = (char)('A' + zb - 10);
+                       hexCis = znakCifry + hexCis;
+                   }
+               }*/
 
             return hexStr;
 
@@ -101,7 +101,7 @@ namespace prevody
 
         public string BinToHex(int bin)
         {
-            int  dec = 0, i = 1, zbytek;
+            int dec = 0, i = 1, zbytek;
             int hexCis = dec;
             string hexStr = string.Empty;
 
@@ -130,5 +130,39 @@ namespace prevody
 
         }
 
+        public string HexToBin(string hexCis)
+        {
+            int delka = hexCis.Length;
+            int zaklad = 1;
+            int decCis = 0;
+
+
+            for (int i = delka - 1; i >= 0; i--)
+            {
+                if (hexCis[i] >= '0' && hexCis[i] <= '9')
+                {
+                    decCis += (hexCis[i] - 48) * zaklad;
+                    zaklad = zaklad * 16;
+                }
+                else if (hexCis[i] >= 'A' && hexCis[i] <= 'F')
+                {
+                    decCis += (hexCis[i] - 55) * zaklad;
+                    zaklad = zaklad * 16;
+                }
+            }
+            
+
+            string vysledek = string.Empty;
+            while (decCis > 0)
+            {
+                int zbytek = decCis % 2;
+                decCis /= 2;
+                vysledek = zbytek + vysledek;
+            }
+
+
+            return vysledek;
+
+        }
     }
 }
