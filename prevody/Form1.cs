@@ -48,7 +48,7 @@ namespace prevody
         private void button5_Click(object sender, EventArgs e)
         {
             CiselneSoustavy cis = new CiselneSoustavy();
-            int bin = int.Parse(textBox1.Text);
+            string bin = textBox1.Text;
             label1.Text = cis.BinToHex(bin);
         }
 
